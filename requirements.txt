@@ -1,11 +1,30 @@
-# Without problematic packages
+# ======================================================
+# STREAMLIT CLOUD COMPATIBLE REQUIREMENTS
+# ======================================================
+
+# Core Dependencies - Streamlit Cloud Compatible
 streamlit==1.29.0
 pandas==2.2.0
 numpy==1.26.0
+
+# Visualization
 matplotlib==3.8.0
 seaborn==0.13.0
+
+# Machine Learning - Versi yang compatible
 scikit-learn==1.4.0
 imbalanced-learn==0.12.0
+
+# XGBoost - Versi dengan wheel untuk Linux
 xgboost==2.0.0
+
+# XAI Libraries
 shap==0.44.0
 lime==0.2.0.1
+
+# Data Processing
+openpyxl==3.1.2
+joblib==1.3.0
+
+# Interpret ML (Optional - bisa dihapus jika error)
+# interpret==0.4.1
