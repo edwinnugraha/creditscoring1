@@ -253,6 +253,42 @@ def plot_shap_summary(shap_values, X_test, feature_names):
         st.error(f"Error creating SHAP summary: {str(e)}")
     
     st.markdown("</div>", unsafe_allow_html=True)
+# ====== TAMBAHKAN FUNGSI INI DI SINI ======
+def plot_shap_dependence(shap_values, X_test, feature_names, feature_idx):
+    """Plot SHAP dependence plot for a specific feature"""
+    st.markdown("<div class='shap-card'>", unsafe_allow_html=True)
+    st.markdown(f"### 📈 SHAP Dependence Plot for '{feature_names[feature_idx]}'")
+    
+    try:
+        fig, ax = plt.subplots(figsize=(12, 6))
+        shap.dependence_plot(
+            feature_idx,
+            shap_values,
+            X_test,
+            feature_names=feature_names,
+            ax=ax,
+            show=False
+        )
+        plt.tight_layout()
+        st.pyplot(fig)
+        plt.close()
+        
+        # Interpretasi
+        st.markdown("#### 📝 Interpretation")
+        st.write("""
+        - **X-axis**: Value of the selected feature
+        - **Y-axis**: SHAP value (impact on prediction)
+        - **Color**: Shows interaction with the most correlated feature
+        - **Trend**: Shows how feature values affect the prediction
+        """)
+        
+    except Exception as e:
+        st.error(f"Error creating dependence plot: {str(e)}")
+    
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# ====== SAMPAI DI SINI ======
+
 
 def plot_shap_force_plot(explainer, instance, feature_names, instance_idx=None):
     """Plot SHAP force plot for individual prediction"""
